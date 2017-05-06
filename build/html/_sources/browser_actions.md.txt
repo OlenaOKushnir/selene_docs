@@ -1,0 +1,13 @@
+# Browser Actions: [browser.* ](https://github.com/yashaka/selene/blob/master/selene/browser.py)
+
+e.g. ```browser.visit('https://todomvc4tasj.herokuapp.com')```
+
+e.g. ```browser.element('#new-todo')```
+
+e.g. ```browser.all('#todo-list>li')```
+
+Once you have the elements, of course you can do some actions on them:
+
+e.g. ```browser.element('#new-todo').set_value('do something').press_enter()```
+
+e.g. ```browser.all('#todo-list>li').first().find('.toggle').click()```
