@@ -41,8 +41,7 @@ Assertion conditions are used in "assertion actions" on elements.
 
 e.g. ```browser.element("#new-todo").should(be.blank)``` or the same ```browser.element("#new-todo").should(have.value(''))```
 
-e.g. ```browser.all('#todo-list>li').should(have.exact_texts('do something', /
-'do more'))```
+e.g. ```browser.all('#todo-list>li').should(have.exact_texts('do something', 'do more'))```
 
 e.g. ```browser.all('#todo-list>li').should(be.empty)```
 

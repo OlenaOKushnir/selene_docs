@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SeleneCollection &#8212; selene 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Selectors" href="selectors.html" /> 
+  </head>
+  <body role="document">
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">selene 1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="selectors.html" title="Selectors"
+             accesskey="P">previous</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="selenecollection">
+<span id="selenecollection"></span><h1>SeleneCollection<a class="headerlink" href="#selenecollection" title="Permalink to this headline">¶</a></h1>
+<p>The object of the SeleneCollection class is a &#8220;proxy&#8221;, like <a class="reference external" href=".../selene_docs/sourse/elements.md">SeleneElement</a>. To call it, you need to use the <code class="docutils literal"><span class="pre">ss</span></code> method. The result is a list of web elements on the page.</p>
+<p>Объект класса SeleneCollection - прокси, как и SeleneElement. Чтобы его вызвать, нужно воспользоваться методом <code class="docutils literal"><span class="pre">ss</span></code>. Результатом будет список веб-элементов на странице.</p>
+<p>Объект этого класса также является прокси точно также как SelenideElement. Его можно получить с помощью вызова метода $$, и он представляет список веб-элементов на странице.
+Для ElementsCollection определенны методы следующего типа:
+методы выборки внутренних элементов
+а точнее методы создания прокси-элементов представляющих выбранные элементы из данной коллекции
+методы-проверки состояния коллекции элементов - assertions
+методы получения статусов и значений коллекции элементов
+Assertions</p>
+<p>инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, совершают проверку по предикату (&#8220;условию&#8221; - объекту-кондишену класса CollectionCondition), и возвращают объекты ElementsCollection, позволяя использовать цепочки вызовов.
+shouldBe - e.g. $$(&#8221;.errors&#8221;).shouldBe(empty)
+shouldHave - e.g. $$(&#8220;#mytable tbody tr&#8221;).shouldHave(size(2))
+Также играют роль явных ожиданий (explicit waits). Они ждут до удовлетворения условия (size, empty) пока не истечет таймаут (значение Configuration.collectionsTimeout, которое установлено по умолчанию в 6000 миллисекунд).
+Методы получения статусов и значений коллекции элементов</p>
+<p>Инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, и возращают соответствуюе значение:
+size()
+isEmpty()
+getTexts() // возвращает массив видимых текстов, e.g. для элементов <li>a</li><li hidden>b</li><li>c</li> вернет массив вида [&#8220;a&#8221;, &#8220;&#8221;, &#8220;c&#8221;]
+Эти методы - не имеют встроенных неявных ожиданий.
+Методы выборки внутренних элементов</p>
+<p>Дополнительная фильтрация - возвращает обьект прокси-коллекции представляющий отфильтрованные элементы оригинальной коллекции на странице, не имеет встроенных ожиданий.
+filterBy(Condition) возвращает коллекцию (как ElementsCollection) из только тех элементов оригинальной коллекции, которые удовлетворяют условию - e.g. $$(&#8220;#multirowTable tr&#8221;).filterBy(text(&#8220;Norris&#8221;))
+excludeWith(Condition) - e.g. $$(&#8220;#multirowTable tr&#8221;).excludeWith(text(&#8220;Chuck&#8221;))
+Дополнительный поиск элементов - возвращает обьект прокси-элемента представляющий найденный элемент оригинальной коллекции на странице, не имеет встроенных ожиданий.
+get(int) - возвращает n-ый элемент какSelenideElement`; при попытке действий над элементом сработает неявное ожидание до существования и видимости n-го элемента в оригинальной коллекции
+findBy(Condition) - возвращает элемент коллекции как SelenideElement который удовлетворяет условию , при попытке действий над элементом сработает неявное ожидание до появления в оригинальной коллекции соответствующего элемента
+Дополнительная фильтрация и поиск позволяют почти полностью отказаться от менее читабельных xpath локаторов:
+$$(&#8220;#list li&#8221;).filterBy(cssClass(&#8220;enabled&#8221;)).findBy(exactText(&#8220;foo&#8221;)).find(&#8221;.remove&#8221;).click();
+// вместо
+$(By.xpath(&#8220;//<em>[&#64;id=&#8217;list&#8217;]//li[&#64;class=&#8217;enabled&#8217; and .//text()=&#8217;foo&#8217;]//</em>[&#64;class=&#8217;remove&#8217;]&#8221;)).click();</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a></li>
+<li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneCollection</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="selectors.html" title="Selectors"
+              >previous</a> |
+            <a href="genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/elements_collection.md.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, yashaka.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -12,6 +12,11 @@ Welcome to Selene's documentation!
 
    introduction
    quick_start
+   selene
+   elements
+   condition
+   selectors
+   elements_collection
 
 
 
