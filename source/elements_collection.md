@@ -1,6 +1,6 @@
 # SeleneCollection
 
-The object of the SeleneCollection class is a "proxy", like [SeleneElement](elements.md). To call it, you need to use the ```ss``` method. The result is a list of web elements on the page.
+The object of the SeleneCollection class is a "proxy", like [SeleneElement](http://selene-docs-test.readthedocs.io/en/latest/elements.html#). To call it, you need to use the ```ss``` method. The result is a list of web elements on the page.
 
  Объект класса SeleneCollection - прокси, как и SeleneElement. Чтобы его вызвать, нужно воспользоваться методом ```ss```. Результатом будет список веб-элементов на странице.
 
