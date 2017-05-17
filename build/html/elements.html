@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SeleneElement [src] &#8212; selene 1 documentation</title>
+    <title>SeleneElement &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -33,7 +33,7 @@
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="index.html">selene 1 documentation</a></div>
+          href="index.html">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="selene.html" title="Selene [src]"
              accesskey="P">previous</a> |
@@ -53,8 +53,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="seleneelement-src">
-<span id="seleneelement-src"></span><h1>SeleneElement <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/elements.py"> [src] </a><a class="headerlink" href="#seleneelement-src" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="seleneelement">
+<span id="seleneelement"></span><h1>SeleneElement<a class="headerlink" href="#seleneelement" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/elements.py"> [src] </a></p>
 <p>The object returned by the <code class="docutils literal"><span class="pre">s</span></code> command is called a &#8220;proxy-element&#8221;. The SeleneElement class is a wrapper around Selenium WebElement, which adds some very useful methods. At the moment of creation of proxy-element the real search of element on the page is not initiated. But on any subsequent action or condition check - the actual replica of the page element will be acquired by the &#8220;proxy-element&#8221;, and the corresponding action or condition check will be &#8220;proxied&#8221; to it.</p>
 <p>This allows to automate testing of modern dynamic web applications.
 You can also store the &#8220;proxy-element&#8221; into the PageObject field before loading the corresponding page in the browser:</p>
@@ -75,15 +76,18 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">home</span> <span class="o">=</span> <span class="n">HomePage</span><span class="p">()</span>
-        <span class="c1"># now the s command was executed and the SeleneElement object was created, but the browser has not been opened yet</span>
+        <span class="c1"># now the s command was executed and the SeleneElement object was created,</span>
+        <span class="n">but</span> <span class="n">the</span> <span class="n">browser</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">been</span> <span class="n">opened</span> <span class="n">yet</span>
         <span class="c1"># ...</span>
         <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/home&quot;</span><span class="p">)</span>
         <span class="c1"># the browser has been opened and the page has been loaded</span>
         <span class="n">home</span><span class="o">.</span><span class="n">filter_active</span><span class="p">()</span>
-        <span class="c1"># exactly here the search was initiated and the actual replica of the page menu element was got, then its inner stream element was found and the click command was &quot;proxied&quot; to it.</span>
+        <span class="c1"># exactly here the search was initiated and the actual replica of the page menu element was got,</span>
+        <span class="n">then</span> <span class="n">its</span> <span class="n">inner</span> <span class="n">stream</span> <span class="n">element</span> <span class="n">was</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">click</span> <span class="n">command</span> <span class="n">was</span> <span class="s2">&quot;proxied&quot;</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span>
         <span class="c1"># ...something else might happen</span>
         <span class="n">home</span><span class="o">.</span><span class="n">toggle_all</span><span class="p">()</span>
-        <span class="c1"># and now, before finding the element-link with the &quot;Active&quot; text to click on it - again, the actual version of the menu element was found on the page.</span>
+        <span class="c1"># and now, before finding the element-link with the &quot;Active&quot; text to</span>
+        <span class="n">click</span> <span class="n">on</span> <span class="n">it</span> <span class="o">-</span> <span class="n">again</span><span class="p">,</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">element</span> <span class="n">was</span> <span class="n">found</span> <span class="n">on</span> <span class="n">the</span> <span class="n">page</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>There are such methods for for the SeleneElement:</p>
@@ -133,22 +137,31 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
 <div class="section" id="methods-to-check-element-state-assertions">
 <span id="methods-to-check-element-state-assertions"></span><h2>Methods to check element state - assertions<a class="headerlink" href="#methods-to-check-element-state-assertions" title="Permalink to this headline">¶</a></h2>
 <p>Assertions methods serve for verification. This method trigger the search of actual element on a page, then it is checked on the condition(an object the <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/conditions.py">Condition class</a>). It returns back the object of SeleneElement.</p>
-<p><code class="docutils literal"><span class="pre">tasks.should(be.Condition)</span></code> | <code class="docutils literal"><span class="pre">tasks.should(have.Condition)</span></code>. More details about asserts you can find <a class="reference external" href="#Condition">here</a></p>
+<p><code class="docutils literal"><span class="pre">tasks.should(be.Condition)</span></code> | <code class="docutils literal"><span class="pre">tasks.should(have.Condition)</span></code>. More details about asserts you can find <a class="reference external" href="http://selene-docs-test.readthedocs.io/en/latest/condition.html">here</a></p>
 </div>
 <div class="section" id="methods-actions-on-element">
 <span id="methods-actions-on-element"></span><h2>Methods-actions on element<a class="headerlink" href="#methods-actions-on-element" title="Permalink to this headline">¶</a></h2>
 <p>Element actions methods:</p>
-<p>click()</p>
-<p>double_click()</p>
-<p>context_click()</p>
-<p>hover()</p>
-<p>set(String) | set_value(String)</p>
-<p>scroll_to()</p>
-<p>press_enter()</p>
-<p>press_escape()</p>
-<p>press_tab()</p>
-<p>scroll_to()</p>
-<p>...</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">click</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">double_click</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">context_click</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">hover</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="nb">set</span><span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">|</span> <span class="n">set_value</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+
+<span class="o">+</span> <span class="n">scroll_to</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">press_enter</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">press_escape</span><span class="p">()</span>
+
+<span class="o">+</span> <span class="n">press_tab</span><span class="p">()</span>
+<span class="o">...</span>
+</pre></div>
+</div>
 <p>All these methods perform corresponding action after the search for proxy-elements on the page.
 And each of these actions has a built-in implicit wait for the element&#8217;s visibility (the default value of config.timeout is 4 seconds).
 As a result you don&#8217;t need to check the element&#8217;s visibility everytime.</p>
@@ -207,7 +220,7 @@ As a result you don&#8217;t need to check the element&#8217;s visibility everyti
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneElement  [src] </a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneElement</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#inner-elements-search-methods">Inner elements search methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#methods-to-check-element-state-assertions">Methods to check element state - assertions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#methods-actions-on-element">Methods-actions on element</a></li>
@@ -215,6 +228,12 @@ As a result you don&#8217;t need to check the element&#8217;s visibility everyti
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Quick Start &#8212; selene 1 documentation</title>
+    <title>Quick Start &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -33,7 +33,7 @@
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="index.html">selene 1 documentation</a></div>
+          href="index.html">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="introduction.html" title="Selene"
              accesskey="P">previous</a> |
@@ -70,7 +70,7 @@
 </div>
 <div class="section" id="browser-actions-browser">
 <span id="browser-actions-browser"></span><h2>1. Browser Actions: <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/browser.py">browser.* </a><a class="headerlink" href="#browser-actions-browser" title="Permalink to this headline">¶</a></h2>
-<p>e.g. <code class="docutils literal"><span class="pre">browser.visit('https://todomvc4tasj.herokuapp.com')</span></code></p>
+<p>e.g. <code class="docutils literal"><span class="pre">browser.open_url('https://todomvc4tasj.herokuapp.com')</span></code></p>
 <p>e.g. <code class="docutils literal"><span class="pre">browser.element('#new-todo')</span></code></p>
 <p>e.g. <code class="docutils literal"><span class="pre">browser.all('#todo-list&gt;li')</span></code></p>
 <p>Once you have the elements, of course you can do some actions on them:</p>
@@ -96,7 +96,7 @@
 <p>Config options can be also overriden with corresponding system variables (see <a class="reference external" href="https://github.com/yashaka/selene/issues/51">#51</a> for more details)</p>
 </div>
 <div class="section" id="concise-jquery-style-shortcuts-for-finding-elements">
-<span id="concise-jquery-style-shortcuts-for-finding-elements"></span><h2>5. Concise jquery-style shortcuts for finding elements:<a class="headerlink" href="#concise-jquery-style-shortcuts-for-finding-elements" title="Permalink to this headline">¶</a></h2>
+<span id="concise-jquery-style-shortcuts-for-finding-elements"></span><h2>+ 5. Concise jquery-style shortcuts for finding elements<a class="headerlink" href="#concise-jquery-style-shortcuts-for-finding-elements" title="Permalink to this headline">¶</a></h2>
 <p>e.g. <code class="docutils literal"><span class="pre">s('#new-todo')</span></code> instead of <code class="docutils literal"><span class="pre">browser.element('#new-todo')</span></code></p>
 <p>e.g. <code class="docutils literal"><span class="pre">ss('#todo-list&gt;li')</span></code> instead of <code class="docutils literal"><span class="pre">browser.all('#todo-list&gt;li')</span></code></p>
 </div>
@@ -126,12 +126,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#custom-selectors-by">2. Custom Selectors: by.* </a></li>
 <li class="toctree-l2"><a class="reference internal" href="#assertion-conditions-be-and-have">3. Assertion Conditions: be.*  and have.* </a></li>
 <li class="toctree-l2"><a class="reference internal" href="#custom-configuration-config">4. Custom Configuration: config.* </a></li>
-<li class="toctree-l2"><a class="reference internal" href="#concise-jquery-style-shortcuts-for-finding-elements">5. Concise jquery-style shortcuts for finding elements:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concise-jquery-style-shortcuts-for-finding-elements">+ 5. Concise jquery-style shortcuts for finding elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#imports">Imports</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">

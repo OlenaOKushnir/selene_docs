@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to Selene’s documentation! &#8212; selene 1 documentation</title>
+    <title>Welcome to Selene’s documentation! &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -32,7 +32,7 @@
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="#">selene 1 documentation</a></div>
+          href="#">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="introduction.html" title="Selene"
              accesskey="N">next</a> |
@@ -55,19 +55,22 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#main-features">Main features:</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#basic-usage-4-pillars-of-selene">Basic Usage: 4 pillars of Selene</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#browser-actions-browser">1. Browser Actions: browser.* </a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#custom-selectors-by">2. Custom Selectors: by.* </a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#assertion-conditions-be-and-have">3. Assertion Conditions: be.*  and have.* </a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#custom-configuration-config">4. Custom Configuration: config.* </a></li>
-<li class="toctree-l2"><a class="reference internal" href="quick_start.html#concise-jquery-style-shortcuts-for-finding-elements">5. Concise jquery-style shortcuts for finding elements:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#concise-jquery-style-shortcuts-for-finding-elements">+ 5. Concise jquery-style shortcuts for finding elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html#imports">Imports</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a><ul>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="elements.html#inner-elements-search-methods">Inner elements search methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements.html#methods-to-check-element-state-assertions">Methods to check element state - assertions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="elements.html#methods-actions-on-element">Methods-actions on element</a></li>
@@ -76,7 +79,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elements_collection.html#assertions">Assertions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements_collection.html#methods-to-get-statues-and-attributes-of-elements-collection">Methods to get statues and attributes of elements collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elements_collection.html#methods-selectors-of-specific-collection-elements">Methods-selectors of specific collection elements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="page_objects.html#pageobjects-implementation">PageObjects implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_objects.html#pageobjects-composed-with-widgets">PageObjects composed with Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_objects.html#more-examples">More examples</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -101,10 +118,14 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">

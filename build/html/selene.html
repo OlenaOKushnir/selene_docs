@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Selene [src] &#8212; selene 1 documentation</title>
+    <title>Selene [src] &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -26,18 +26,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SeleneElement [src]" href="elements.html" />
+    <link rel="next" title="SeleneElement" href="elements.html" />
     <link rel="prev" title="Quick Start" href="quick_start.html" /> 
   </head>
   <body role="document">
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="index.html">selene 1 documentation</a></div>
+          href="index.html">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="quick_start.html" title="Quick Start"
              accesskey="P">previous</a> |
-          <a href="elements.html" title="SeleneElement [src]"
+          <a href="elements.html" title="SeleneElement"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -55,7 +55,7 @@
             
   <div class="section" id="selene-src">
 <span id="selene-src"></span><h1>Selene <a class="reference external" href="https://github.com/yashaka/selene">[src]</a><a class="headerlink" href="#selene-src" title="Permalink to this headline">¶</a></h1>
-<p>The core of the Selene library. Main methods are <code class="docutils literal"><span class="pre">visit</span></code>, <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code>:</p>
+<p>The core of the Selene library. Main methods are <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code>:</p>
 <p><code class="docutils literal"><span class="pre">s(String</span> <span class="pre">cssSelector)</span></code> – returns object of the SeleneElement class that represents first element found by CSS selector on the page.</p>
 <p><code class="docutils literal"><span class="pre">s(By)</span></code> – returns &#8220;first SeleneElement&#8221; by the locator of the By class</p>
 <p><code class="docutils literal"><span class="pre">ss(String</span> <span class="pre">cssSelector)</span></code> – returns object of type ElementsCollection that represents collection of all elements found by a CSS selector.</p>
@@ -81,11 +81,11 @@
 </pre></div>
 </div>
 <p>&#8220;ss&#8221; can be useful when a needed element is a one of a same type. For example, instead of:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="n">by_xpath</span><span class="p">(</span><span class="s2">&quot;//*[@id=&#39;.srg .g&#39;]//a[contains(text(),&#39;In Greek mythology, Selene is the goddess of the moon&#39;)]&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;//*[@id=&#39;todo-list&#39;]/li[.//text()=&#39;b&#39;]//*[@class=&#39;toggle&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>you can use a more readable and verbose alternative:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$$(&quot;.srg .g&quot;).should(have.text(&quot;In Greek mythology, Selene is the goddess of the moon&quot;)).click()
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by</span><span class="o">.</span><span class="n">exact_text</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.toggle&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Such a &#8220;composite locator&#8221; is also convenient because in the case of an error in finding an element, it makes it possible, according to the error message, to immediately determine which of the &#8220;parts&#8221; did not work. In the first case, we can only get information that the &#8220;whole locator&#8221; did not work, and we will spend more time searching for the &#8220;part&#8221; that led to the error.</p>
@@ -109,7 +109,14 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Selene [src]</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">
@@ -132,7 +139,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="quick_start.html" title="Quick Start"
               >previous</a> |
-            <a href="elements.html" title="SeleneElement [src]"
+            <a href="elements.html" title="SeleneElement"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

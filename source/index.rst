@@ -17,6 +17,10 @@ Welcome to Selene's documentation!
    condition
    selectors
    elements_collection
+   collection_condition
+   web_driver_runner
+   configuration
+   page_objects
 
 
 

@@ -17,7 +17,7 @@ All pillars are reflected in corresponding selene python modules and their metho
 
 ## 1. Browser Actions: [browser.* ](https://github.com/yashaka/selene/blob/master/selene/browser.py)
 
-e.g. ```browser.visit('https://todomvc4tasj.herokuapp.com')```
+e.g. ```browser.open_url('https://todomvc4tasj.herokuapp.com')```
 
 e.g. ```browser.element('#new-todo')```
 
@@ -39,7 +39,7 @@ e.g. ```browser.element(by.link_text("Active")).click()```
 
 Assertion conditions are used in "assertion actions" on elements.
 
-e.g. ```browser.element("#new-todo").should(be.blank)``` or the same ```browser.element("#new-todo").should(have.value(''))```
+e.g. ```browser.element('#new-todo').should(be.blank)``` or the same ```browser.element("#new-todo").should(have.value(''))```
 
 e.g. ```browser.all('#todo-list>li').should(have.exact_texts('do something', 'do more'))```
 
@@ -49,11 +49,11 @@ e.g. ```browser.all('#todo-list>li').should(be.empty)```
 
 e.g. ```config.browser_name = 'chrome'```
 
-You can omit custom configuration and Selene will use default values, e.g. browser_name is equal to ```'firefox'``` by default
+You can omit custom configuration and Selene will use default values, e.g. '''browser_name''' is equal to ```'firefox'``` by default
 
 Config options can be also overriden with corresponding system variables (see [#51](https://github.com/yashaka/selene/issues/51) for more details)
 
-## 5. Concise jquery-style shortcuts for finding elements:
+##  + 5. Concise jquery-style shortcuts for finding elements
 
 e.g. ```s('#new-todo')``` instead of ```browser.element('#new-todo')```
 

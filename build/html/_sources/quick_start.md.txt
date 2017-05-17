@@ -17,7 +17,7 @@ All pillars are reflected in corresponding selene python modules and their metho
 
 ## 1. Browser Actions: [browser.* ](https://github.com/yashaka/selene/blob/master/selene/browser.py)
 
-e.g. ```browser.visit('https://todomvc4tasj.herokuapp.com')```
+e.g. ```browser.open_url('https://todomvc4tasj.herokuapp.com')```
 
 e.g. ```browser.element('#new-todo')```
 
@@ -53,7 +53,7 @@ You can omit custom configuration and Selene will use default values, e.g. brows
 
 Config options can be also overriden with corresponding system variables (see [#51](https://github.com/yashaka/selene/issues/51) for more details)
 
-## 5. Concise jquery-style shortcuts for finding elements:
+##  + 5. Concise jquery-style shortcuts for finding elements
 
 e.g. ```s('#new-todo')``` instead of ```browser.element('#new-todo')```
 

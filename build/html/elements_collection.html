@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SeleneCollection &#8212; selene 1 documentation</title>
+    <title>SeleneCollection &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1',
+        VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -26,16 +26,19 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Collection Conditions" href="collection_condition.html" />
     <link rel="prev" title="Selectors" href="selectors.html" /> 
   </head>
   <body role="document">
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="index.html">selene 1 documentation</a></div>
+          href="index.html">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="selectors.html" title="Selectors"
              accesskey="P">previous</a> |
+          <a href="collection_condition.html" title="Collection Conditions"
+             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -52,36 +55,50 @@
             
   <div class="section" id="selenecollection">
 <span id="selenecollection"></span><h1>SeleneCollection<a class="headerlink" href="#selenecollection" title="Permalink to this headline">¶</a></h1>
-<p>The object of the SeleneCollection class is a &#8220;proxy&#8221;, like <a class="reference external" href=".../elements.md">SeleneElement</a>. To call it, you need to use the <code class="docutils literal"><span class="pre">ss</span></code> method. The result is a list of web elements on the page.</p>
-<p>Объект класса SeleneCollection - прокси, как и SeleneElement. Чтобы его вызвать, нужно воспользоваться методом <code class="docutils literal"><span class="pre">ss</span></code>. Результатом будет список веб-элементов на странице.</p>
-<p>Объект этого класса также является прокси точно также как SelenideElement. Его можно получить с помощью вызова метода $$, и он представляет список веб-элементов на странице.
-Для ElementsCollection определенны методы следующего типа:
-методы выборки внутренних элементов
-а точнее методы создания прокси-элементов представляющих выбранные элементы из данной коллекции
-методы-проверки состояния коллекции элементов - assertions
-методы получения статусов и значений коллекции элементов
-Assertions</p>
-<p>инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, совершают проверку по предикату (&#8220;условию&#8221; - объекту-кондишену класса CollectionCondition), и возвращают объекты ElementsCollection, позволяя использовать цепочки вызовов.
-shouldBe - e.g. $$(&#8221;.errors&#8221;).shouldBe(empty)
-shouldHave - e.g. $$(&#8220;#mytable tbody tr&#8221;).shouldHave(size(2))
-Также играют роль явных ожиданий (explicit waits). Они ждут до удовлетворения условия (size, empty) пока не истечет таймаут (значение Configuration.collectionsTimeout, которое установлено по умолчанию в 6000 миллисекунд).
-Методы получения статусов и значений коллекции элементов</p>
-<p>Инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, и возращают соответствуюе значение:
-size()
-isEmpty()
-getTexts() // возвращает массив видимых текстов, e.g. для элементов <li>a</li><li hidden>b</li><li>c</li> вернет массив вида [&#8220;a&#8221;, &#8220;&#8221;, &#8220;c&#8221;]
-Эти методы - не имеют встроенных неявных ожиданий.
-Методы выборки внутренних элементов</p>
-<p>Дополнительная фильтрация - возвращает обьект прокси-коллекции представляющий отфильтрованные элементы оригинальной коллекции на странице, не имеет встроенных ожиданий.
-filterBy(Condition) возвращает коллекцию (как ElementsCollection) из только тех элементов оригинальной коллекции, которые удовлетворяют условию - e.g. $$(&#8220;#multirowTable tr&#8221;).filterBy(text(&#8220;Norris&#8221;))
-excludeWith(Condition) - e.g. $$(&#8220;#multirowTable tr&#8221;).excludeWith(text(&#8220;Chuck&#8221;))
-Дополнительный поиск элементов - возвращает обьект прокси-элемента представляющий найденный элемент оригинальной коллекции на странице, не имеет встроенных ожиданий.
-get(int) - возвращает n-ый элемент какSelenideElement`; при попытке действий над элементом сработает неявное ожидание до существования и видимости n-го элемента в оригинальной коллекции
-findBy(Condition) - возвращает элемент коллекции как SelenideElement который удовлетворяет условию , при попытке действий над элементом сработает неявное ожидание до появления в оригинальной коллекции соответствующего элемента
-Дополнительная фильтрация и поиск позволяют почти полностью отказаться от менее читабельных xpath локаторов:
-$$(&#8220;#list li&#8221;).filterBy(cssClass(&#8220;enabled&#8221;)).findBy(exactText(&#8220;foo&#8221;)).find(&#8221;.remove&#8221;).click();
-// вместо
-$(By.xpath(&#8220;//<em>[&#64;id=&#8217;list&#8217;]//li[&#64;class=&#8217;enabled&#8217; and .//text()=&#8217;foo&#8217;]//</em>[&#64;class=&#8217;remove&#8217;]&#8221;)).click();</p>
+<p>The object of the SeleneCollection class is a &#8220;proxy&#8221;, like <a class="reference external" href="http://selene-docs-test.readthedocs.io/en/latest/elements.html#">SeleneElement</a>. To call it, you need to call the <code class="docutils literal"><span class="pre">ss</span></code> method. The result is the list of web-elements on the page.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can filter Collections by some condition, check the state of elements collection, get statuses and attributes.</p>
+<div class="section" id="assertions">
+<span id="assertions"></span><h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">¶</a></h2>
+<p>Just as for SeleneElement for SeleneCollection there are condition checks(<code class="docutils literal"><span class="pre">should(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should(have.Condition)</span></code>). As a result, the SeleneCollection object is returned, and this also allows you to build chains of calls.</p>
+<p>The SeleneCollection class also has a special type of check - the correspondence of each individual element from the list to a specific condition is checked(<code class="docutils literal"><span class="pre">should_each(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should_each(have.Condition)</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">(</span><span class="s2">&quot;.srg .g&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;In Greek mythology, Selene is the goddess of the moon&quot;</span><span class="p">))</span>
+
+<span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">exact_texts</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">))</span><span class="o">.</span>
+    <span class="n">should_each</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">css_class</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>These methods also have built-in explicit waits. Within 4 seconds (by default) they wait for the condition to be satisfied.</p>
+</div>
+<div class="section" id="methods-to-get-statues-and-attributes-of-elements-collection">
+<span id="methods-to-get-statues-and-attributes-of-elements-collection"></span><h2>Methods to get statues and attributes of elements collection<a class="headerlink" href="#methods-to-get-statues-and-attributes-of-elements-collection" title="Permalink to this headline">¶</a></h2>
+<p>You can use such methods to get statues and attributes of SeleneCollection:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">texts(texts)</span></code></li>
+<li><code class="docutils literal"><span class="pre">exact_texts(texts)</span></code></li>
+<li><code class="docutils literal"><span class="pre">size(index)</span></code></li>
+<li><code class="docutils literal"><span class="pre">empty()</span></code></li>
+<li><code class="docutils literal"><span class="pre">size_at_least(index)</span></code></li>
+</ul>
+<p>[Examples](# Collection Conditions)</p>
+</div>
+<div class="section" id="methods-selectors-of-specific-collection-elements">
+<span id="methods-selectors-of-specific-collection-elements"></span><h2>Methods-selectors of specific collection elements<a class="headerlink" href="#methods-selectors-of-specific-collection-elements" title="Permalink to this headline">¶</a></h2>
+<p>Additionally, you can sort the resulting collection by some condition:</p>
+<p><code class="docutils literal"><span class="pre">filtered_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">all_by(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filtered(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filter_by(Condition)</span></code></p>
+<p>returns the proxy-collection that represents elements of original collection filtered by condition</p>
+<p>e.g. <code class="docutils literal"><span class="pre">ss('.item').filtered_by(text('foo'))</span></code></p>
+<p><code class="docutils literal"><span class="pre">element_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">find_by(Condition)</span></code></p>
+<p>returns the first collection element that satisfied the condition</p>
+<p>e.g. <code class="docutils literal"><span class="pre">ss('.item').element_by(text('foo'))</span></code></p>
+<p>Some more useful methods for working with SeleneCollection:</p>
+<p><code class="docutils literal"><span class="pre">size()</span></code> - returns size of collection</p>
+<p><code class="docutils literal"><span class="pre">first()</span></code> - returns first element of collection</p>
+</div>
 </div>
 
 
@@ -96,10 +113,17 @@ $(By.xpath(&#8220;//<em>[&#64;id=&#8217;list&#8217;]//li[&#64;class=&#8217;enabl
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement  [src] </a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneCollection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneCollection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-to-get-statues-and-attributes-of-elements-collection">Methods to get statues and attributes of elements collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-selectors-of-specific-collection-elements">Methods-selectors of specific collection elements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
 </ul>
 
           <div role="search">
@@ -122,6 +146,8 @@ $(By.xpath(&#8220;//<em>[&#64;id=&#8217;list&#8217;]//li[&#64;class=&#8217;enabl
           <div role="navigation" aria-label="related navigaton">
             <a href="selectors.html" title="Selectors"
               >previous</a> |
+            <a href="collection_condition.html" title="Collection Conditions"
+              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>

@@ -1,39 +1,64 @@
 # SeleneCollection
 
-The object of the SeleneCollection class is a "proxy", like [SeleneElement](.../elements.md). To call it, you need to use the ```ss``` method. The result is a list of web elements on the page.
+The object of the SeleneCollection class is a "proxy", like [SeleneElement](http://selene-docs-test.readthedocs.io/en/latest/elements.html#). To call it, you need to call the ```ss``` method. The result is the list of web-elements on the page.
 
- Объект класса SeleneCollection - прокси, как и SeleneElement. Чтобы его вызвать, нужно воспользоваться методом ```ss```. Результатом будет список веб-элементов на странице.
+```
+ss('#todo-list>li')
+```
 
+We can filter Collections by some condition, check the state of elements collection, get statuses and attributes.
 
+## Assertions
 
-Объект этого класса также является прокси точно также как SelenideElement. Его можно получить с помощью вызова метода $$, и он представляет список веб-элементов на странице.
-Для ElementsCollection определенны методы следующего типа:
-методы выборки внутренних элементов
-а точнее методы создания прокси-элементов представляющих выбранные элементы из данной коллекции
-методы-проверки состояния коллекции элементов - assertions
-методы получения статусов и значений коллекции элементов
-Assertions
+Just as for SeleneElement for SeleneCollection there are condition checks(```should(be.Condition)``` or ```should(have.Condition)```). As a result, the SeleneCollection object is returned, and this also allows you to build chains of calls.
 
-инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, совершают проверку по предикату ("условию" - объекту-кондишену класса CollectionCondition), и возвращают объекты ElementsCollection, позволяя использовать цепочки вызовов.
-shouldBe - e.g. $$(".errors").shouldBe(empty)
-shouldHave - e.g. $$("#mytable tbody tr").shouldHave(size(2))
-Также играют роль явных ожиданий (explicit waits). Они ждут до удовлетворения условия (size, empty) пока не истечет таймаут (значение Configuration.collectionsTimeout, которое установлено по умолчанию в 6000 миллисекунд).
-Методы получения статусов и значений коллекции элементов
+The SeleneCollection class also has a special type of check - the correspondence of each individual element from the list to a specific condition is checked(```should_each(be.Condition)``` or ```should_each(have.Condition)```):
 
-Инициируют для прокси-коллекции поиск актуальных версий элементов коллекции на странице, и возращают соответствуюе значение:
-size()
-isEmpty()
-getTexts() // возвращает массив видимых текстов, e.g. для элементов <li>a</li><li hidden>b</li><li>c</li> вернет массив вида ["a", "", "c"]
-Эти методы - не имеют встроенных неявных ожиданий.
-Методы выборки внутренних элементов
+```
+ss(".srg .g")[0].should(have.text("In Greek mythology, Selene is the goddess of the moon"))
 
-Дополнительная фильтрация - возвращает обьект прокси-коллекции представляющий отфильтрованные элементы оригинальной коллекции на странице, не имеет встроенных ожиданий.
-filterBy(Condition) возвращает коллекцию (как ElementsCollection) из только тех элементов оригинальной коллекции, которые удовлетворяют условию - e.g. $$("#multirowTable tr").filterBy(text("Norris"))
-excludeWith(Condition) - e.g. $$("#multirowTable tr").excludeWith(text("Chuck"))
-Дополнительный поиск элементов - возвращает обьект прокси-элемента представляющий найденный элемент оригинальной коллекции на странице, не имеет встроенных ожиданий.
-get(int) - возвращает n-ый элемент какSelenideElement`; при попытке действий над элементом сработает неявное ожидание до существования и видимости n-го элемента в оригинальной коллекции
-findBy(Condition) - возвращает элемент коллекции как SelenideElement который удовлетворяет условию , при попытке действий над элементом сработает неявное ожидание до появления в оригинальной коллекции соответствующего элемента
-Дополнительная фильтрация и поиск позволяют почти полностью отказаться от менее читабельных xpath локаторов:
-$$("#list li").filterBy(cssClass("enabled")).findBy(exactText("foo")).find(".remove").click();
-// вместо
-$(By.xpath("//*[@id='list']//li[@class='enabled' and .//text()='foo']//*[@class='remove']")).click();
+ss('#todo-list>li').should(have.size(3))
+
+ss('#todo-list>li').should(have.exact_texts("1", "2", "3")).
+    should_each(have.css_class("active"))
+```
+
+These methods also have built-in explicit waits. Within 4 seconds (by default) they wait for the condition to be satisfied.
+
+## Methods to get statues and attributes of elements collection
+
+You can use such methods to get statues and attributes of SeleneCollection:
+
++ ```texts(texts)```
+
++ ```exact_texts(texts)```
+
++ ```size(index)```
+
++ ```empty()```
+
++ ```size_at_least(index)```
+
+[Examples](# Collection Conditions)
+
+## Methods-selectors of specific collection elements
+
+Additionally, you can sort the resulting collection by some condition:
+
+```filtered_by(Condition)``` | ```all_by(Condition)```  | ```filtered(Condition)```  | ```filter_by(Condition)```
+
+returns the proxy-collection that represents elements of original collection filtered by condition
+
+e.g. ```ss('.item').filtered_by(text('foo'))```
+
+```element_by(Condition)``` | ```find_by(Condition)```
+
+returns the first collection element that satisfied the condition
+
+e.g. ```ss('.item').element_by(text('foo'))```
+
+Some more useful methods for working with SeleneCollection:
+
+```size()``` - returns size of collection
+
+```first()``` - returns first element of collection
