@@ -76,7 +76,8 @@
 <span class="k">def</span> <span class="nf">test_google_search</span><span class="p">():</span>
     <span class="n">google</span> <span class="o">=</span> <span class="n">GooglePage</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
     <span class="n">search</span> <span class="o">=</span> <span class="n">google</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;selene&quot;</span><span class="p">)</span>
-    <span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;In Greek mythology, Selene is the goddess of the moon&quot;</span><span class="p">))</span>  <span class="c1"># :D</span>
+    <span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;In Greek mythology,</span>
+    <span class="n">Selene</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">goddess</span> <span class="n">of</span> <span class="n">the</span> <span class="n">moon</span><span class="s2">&quot;))  # :D</span>
 </pre></div>
 </div>
 <p>That&#8217;s it. Selene encourages to start writing tests in the simplest way. And add more layers of abstraction only by real demand.</p>
@@ -177,7 +178,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>

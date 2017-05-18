@@ -2,15 +2,15 @@
 
 [[src]](https://github.com/yashaka/selene/blob/master/selene/conditions.py)
 
-Conditions in Selenium wait for a certain condition (visible, enabled, text ('some text')) 4 seconds (default) or the time assigned by the user.
+Conditions in Selenium wait for a certain condition (```visible()```, ```enabled()```, ```text ('some text'))``` 4 seconds (default) or the time assigned by the user.
 
 Which one to use?
 
-```tasks.should(be.Condition)``` | ```tasks.should(have.Condition)```
+**```tasks.should(be.Condition)```** | **```tasks.should(have.Condition)```**
 
 or
 
-```tasks.assure(Condition)``` | ```tasks.should_be(Condition)```
+**```tasks.assure(Condition)```** | **```tasks.should_be(Condition)```**
 
 
 All the following names means the same: ```assure```, ```should```, ```should_be```, ```should_have``` (or ```assure_not```, ```should_not```, ```should_not_be``` , ```should_not_have```).
@@ -94,4 +94,4 @@ value // e.g. s('.element').should(have.value('text')
 
 Any condition can be negated:
 
-```ss('.item').filtered_by(not (exact_text)).size()```
+```ss('.item').filtered_by(not(exact_text)).size()```

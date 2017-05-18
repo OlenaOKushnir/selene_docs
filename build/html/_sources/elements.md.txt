@@ -1,15 +1,14 @@
 # SeleneElement
+
 [ [src] ](https://github.com/yashaka/selene/blob/master/selene/elements.py)
 
-The object returned by the ```s``` command is called a "proxy-element". The SeleneElement class is a wrapper around Selenium WebElement, which adds some very useful methods. At the moment of creation of proxy-element the real search of element on the page is not initiated. But on any subsequent action or condition check - the actual replica of the page element will be acquired by the "proxy-element", and the corresponding action or condition check will be "proxied" to it.
+The ```s``` method returns a" proxy-element ". I.e an actual "version" of the real element from the page will be received at the moment when we will perform some action or condition check with SeleneElement. This allows you to work with the PageObject template, save elements in the PageObject field before the page is opened. And of course, the use of proxy elements greatly simplifies the testing of dynamic web applications.
 
-This allows to automate testing of modern dynamic web applications.
-You can also store the "proxy-element" into the PageObject field before loading the corresponding page in the browser:
+e.g.:
 
 ```
 # before opening a browser and loading a page url
 from selene.api import *
-from selene.bys import by_link_text
 
 
 class HomePage(object):
@@ -17,7 +16,7 @@ class HomePage(object):
     menu = s('#menu')
 
     def filter_active(self) :
-      self.menu.element(by_link_text('Active')).click()
+      self.menu.element(by.link_text('Active')).click()
 
     def toggle_all(self):
       self.menu.element("#toggle-all").click()
@@ -30,8 +29,9 @@ class HomePage(object):
         open("/home")
         # the browser has been opened and the page has been loaded
         home.filter_active()
-        # exactly here the search was initiated and the actual replica of the page menu element was got,
-        then its inner stream element was found and the click command was "proxied" to it.
+        # exactly here the search was initiated and the actual replica of the page menu
+        element was got, then its inner stream element was found and the click
+        command was "proxied" to it.
         # ...something else might happen
         home.toggle_all()
         # and now, before finding the element-link with the "Active" text to
@@ -39,7 +39,7 @@ class HomePage(object):
 
 ```
 
-There are such methods for for the SeleneElement:
+There are such methods for  the SeleneElement:
 
 - inner elements search methods (the methods for creating proxy-elements that represents corresponding inner elements)
 - methods to check element state - assertions
@@ -65,7 +65,7 @@ All these methods return "proxy-elements", they will not start the search of act
 So you can build whole "locators chains", getting one element inside another:
 
 ```
-s('#menu').element(".edit")..all('.item')
+s('#menu').element(".edit").all('.item')
 ```
 
 You can also save such "locators chains" in variables. And no matter how long they are, whether the browser is open and a page is already loaded or not
@@ -73,12 +73,11 @@ You can also save such "locators chains" in variables. And no matter how long th
 ```
 # before opening the browser and loading the page
 from selene.api import *
-from selene.bys import by_link_text
 
 class HomePage(object):
 
     menu = s('#menu')
-    active = menu.element(by_link_text('Active'))
+    active = menu.element(by.link_text('Active'))
     toggle = menu.element('#toggle-all')
 
     # ...
@@ -102,34 +101,33 @@ Assertions methods serve for verification. This method trigger the search of act
 
 Element actions methods:
 
-```
-+ click()
++ ```click()```
 
-+ double_click()
++ ```double_click()```
 
-+ context_click()
++ ```context_click()```
 
-+ hover()
++ ```hover()```
 
-+ set(String) | set_value(String)
++ ```set(String)``` | ```set_value(String)```
 
-+ scroll_to()
++ ```scroll_to()```
 
-+ press_enter()
++ ```press_enter()```
 
-+ press_escape()
++ ```press_escape()```
 
-+ press_tab()
++ ```press_tab()```
 ...
-```
+
 
 All these methods perform corresponding action after the search for proxy-elements on the page.
 And each of these actions has a built-in implicit wait for the element's visibility (the default value of config.timeout is 4 seconds).
-As a result you don't need to check the element's visibility everytime.
+As a result you don't need to check the element's visibility all the time.
 
 Instead of code
 
-```s('.destroy').shouldBe(visible).click()```
+```s('.destroy').should(be.visible).click()```
 
 you write just
 
@@ -142,38 +140,33 @@ The majority of actions allow you to build method chains also:
 ## Methods to get element statuses and attribute values
 
 
-These methods trigger the search of actual element on a page. Some of them have built-in implicit waitings (wait for availability in DOM, even if method is hidden on the page):
+These methods trigger the search of actual element on a page. Some of them have built-in implicit waits (wait for availability in DOM, even if method is hidden on the page):
 
-e.g.
++ ```text()```
 
-```
-text()
++ ```is_selected()```
 
-is_selected()
++ ```is_enabled()```
 
-is_enabled()
++ ```location_once_scrolled_into_view()```
 
-location_once_scrolled_into_view()
++ ```size()```
 
-size()
++ ```location()```
 
-location()
++ ```rect()```
 
-rect()
-```
 
 The following methods do not wait:
 
-```
-tag_name()
++ ```tag_name()```
 
-get_attribute(String)
++ ```get_attribute(String)```
 
-is_displayed()
++ ```is_displayed()```
 
-value_of_css_property(String)
++ ```value_of_css_property(String)```
 
-parent()
++ ```parent()```
 
-id()
-```
++ ```id()```

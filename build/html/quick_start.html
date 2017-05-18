@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Selene [src]" href="selene.html" />
+    <link rel="next" title="Selene" href="selene.html" />
     <link rel="prev" title="Selene" href="introduction.html" /> 
   </head>
   <body role="document">
@@ -37,7 +37,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="introduction.html" title="Selene"
              accesskey="P">previous</a> |
-          <a href="selene.html" title="Selene [src]"
+          <a href="selene.html" title="Selene"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -85,14 +85,14 @@
 <div class="section" id="assertion-conditions-be-and-have">
 <span id="assertion-conditions-be-and-have"></span><h2>3. Assertion Conditions: <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/support/conditions/be.py">be.* </a> and <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/support/conditions/have.py">have.* </a><a class="headerlink" href="#assertion-conditions-be-and-have" title="Permalink to this headline">¶</a></h2>
 <p>Assertion conditions are used in &#8220;assertion actions&#8221; on elements.</p>
-<p>e.g. <code class="docutils literal"><span class="pre">browser.element(&quot;#new-todo&quot;).should(be.blank)</span></code> or the same <code class="docutils literal"><span class="pre">browser.element(&quot;#new-todo&quot;).should(have.value(''))</span></code></p>
+<p>e.g. <code class="docutils literal"><span class="pre">browser.element('#new-todo').should(be.blank)</span></code> or the same <code class="docutils literal"><span class="pre">browser.element(&quot;#new-todo&quot;).should(have.value(''))</span></code></p>
 <p>e.g. <code class="docutils literal"><span class="pre">browser.all('#todo-list&gt;li').should(have.exact_texts('do</span> <span class="pre">something',</span> <span class="pre">'do</span> <span class="pre">more'))</span></code></p>
 <p>e.g. <code class="docutils literal"><span class="pre">browser.all('#todo-list&gt;li').should(be.empty)</span></code></p>
 </div>
 <div class="section" id="custom-configuration-config">
 <span id="custom-configuration-config"></span><h2>4. Custom Configuration: <a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/config.py">config.* </a><a class="headerlink" href="#custom-configuration-config" title="Permalink to this headline">¶</a></h2>
 <p>e.g. <code class="docutils literal"><span class="pre">config.browser_name</span> <span class="pre">=</span> <span class="pre">'chrome'</span></code></p>
-<p>You can omit custom configuration and Selene will use default values, e.g. browser_name is equal to <code class="docutils literal"><span class="pre">'firefox'</span></code> by default</p>
+<p>You can omit custom configuration and Selene will use default values, e.g. &#8216;&#8217;&#8216;browser_name&#8217;&#8216;&#8217; is equal to <code class="docutils literal"><span class="pre">'firefox'</span></code> by default</p>
 <p>Config options can be also overriden with corresponding system variables (see <a class="reference external" href="https://github.com/yashaka/selene/issues/51">#51</a> for more details)</p>
 </div>
 <div class="section" id="concise-jquery-style-shortcuts-for-finding-elements">
@@ -130,7 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#imports">Imports</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
@@ -161,7 +161,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="introduction.html" title="Selene"
               >previous</a> |
-            <a href="selene.html" title="Selene [src]"
+            <a href="selene.html" title="Selene"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

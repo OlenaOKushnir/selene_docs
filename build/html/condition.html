@@ -56,11 +56,11 @@
   <div class="section" id="condition">
 <span id="condition"></span><h1>Condition<a class="headerlink" href="#condition" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/conditions.py">[src]</a></p>
-<p>Conditions in Selenium wait for a certain condition (visible, enabled, text (&#8216;some text&#8217;)) 4 seconds (default) or the time assigned by the user.</p>
+<p>Conditions in Selenium wait for a certain condition (<code class="docutils literal"><span class="pre">visible()</span></code>, <code class="docutils literal"><span class="pre">enabled()</span></code>, <code class="docutils literal"><span class="pre">text</span> <span class="pre">('some</span> <span class="pre">text'))</span></code> 4 seconds (default) or the time assigned by the user.</p>
 <p>Which one to use?</p>
-<p><code class="docutils literal"><span class="pre">tasks.should(be.Condition)</span></code> | <code class="docutils literal"><span class="pre">tasks.should(have.Condition)</span></code></p>
+<p><strong><code class="docutils literal"><span class="pre">tasks.should(be.Condition)</span></code></strong> | <strong><code class="docutils literal"><span class="pre">tasks.should(have.Condition)</span></code></strong></p>
 <p>or</p>
-<p><code class="docutils literal"><span class="pre">tasks.assure(Condition)</span></code> | <code class="docutils literal"><span class="pre">tasks.should_be(Condition)</span></code></p>
+<p><strong><code class="docutils literal"><span class="pre">tasks.assure(Condition)</span></code></strong> | <strong><code class="docutils literal"><span class="pre">tasks.should_be(Condition)</span></code></strong></p>
 <p>All the following names means the same: <code class="docutils literal"><span class="pre">assure</span></code>, <code class="docutils literal"><span class="pre">should</span></code>, <code class="docutils literal"><span class="pre">should_be</span></code>, <code class="docutils literal"><span class="pre">should_have</span></code> (or <code class="docutils literal"><span class="pre">assure_not</span></code>, <code class="docutils literal"><span class="pre">should_not</span></code>, <code class="docutils literal"><span class="pre">should_not_be</span></code> , <code class="docutils literal"><span class="pre">should_not_have</span></code>).</p>
 <p>Just the first assure sounds good with any condition:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">assure</span><span class="p">(</span><span class="n">visible</span><span class="p">)</span> <span class="p">:)</span>
@@ -123,7 +123,7 @@ value // e.g. s(&#39;.element&#39;).should(have.value(&#39;text&#39;)
 </pre></div>
 </div>
 <p>Any condition can be negated:</p>
-<p><code class="docutils literal"><span class="pre">ss('.item').filtered_by(not</span> <span class="pre">(exact_text)).size()</span></code></p>
+<p><code class="docutils literal"><span class="pre">ss('.item').filtered_by(not(exact_text)).size()</span></code></p>
 </div>
 
 
@@ -137,13 +137,15 @@ value // e.g. s(&#39;.element&#39;).should(have.value(&#39;text&#39;)
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements_collection.html">SeleneCollection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">

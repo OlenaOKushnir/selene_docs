@@ -62,8 +62,8 @@
 <p>We can filter Collections by some condition, check the state of elements collection, get statuses and attributes.</p>
 <div class="section" id="assertions">
 <span id="assertions"></span><h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">¶</a></h2>
-<p>Just as for SeleneElement for SeleneCollection there are condition checks(<code class="docutils literal"><span class="pre">should(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should(have.Condition)</span></code>). As a result, the SeleneCollection object is returned, and this also allows you to build chains of calls.</p>
-<p>The SeleneCollection class also has a special type of check - the correspondence of each individual element from the list to a specific condition is checked(<code class="docutils literal"><span class="pre">should_each(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should_each(have.Condition)</span></code>):</p>
+<p>Just as for SeleneElement for SeleneCollection there are condition checks(<code class="docutils literal"><span class="pre">should(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should(have.Condition)</span></code>). As a result, the SeleneCollection object is returned and it is possible to build chains of calls.</p>
+<p>The SeleneCollection class also has a special type of check - the correspondence of each individual element from the list to a specific condition (<code class="docutils literal"><span class="pre">should_each(be.Condition)</span></code> or <code class="docutils literal"><span class="pre">should_each(have.Condition)</span></code>):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">(</span><span class="s2">&quot;.srg .g&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;In Greek mythology, Selene is the goddess of the moon&quot;</span><span class="p">))</span>
 
 <span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
@@ -72,11 +72,11 @@
     <span class="n">should_each</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">css_class</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>These methods also have built-in explicit waits. Within 4 seconds (by default) they wait for the condition to be satisfied.</p>
+<p>These methods also have built-in implicit waits. Within 4 seconds (by default) they wait for the condition to be satisfied.</p>
 </div>
-<div class="section" id="methods-to-get-statues-and-attributes-of-elements-collection">
-<span id="methods-to-get-statues-and-attributes-of-elements-collection"></span><h2>Methods to get statues and attributes of elements collection<a class="headerlink" href="#methods-to-get-statues-and-attributes-of-elements-collection" title="Permalink to this headline">¶</a></h2>
-<p>You can use such methods to get statues and attributes of SeleneCollection:</p>
+<div class="section" id="methods-to-get-statuses-and-attributes-of-elements-collection">
+<span id="methods-to-get-statuses-and-attributes-of-elements-collection"></span><h2>Methods to get statuses and attributes of elements collection<a class="headerlink" href="#methods-to-get-statuses-and-attributes-of-elements-collection" title="Permalink to this headline">¶</a></h2>
+<p>You can use such methods to get statuses and attributes of SeleneCollection:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">texts(texts)</span></code></li>
 <li><code class="docutils literal"><span class="pre">exact_texts(texts)</span></code></li>
@@ -89,11 +89,11 @@
 <div class="section" id="methods-selectors-of-specific-collection-elements">
 <span id="methods-selectors-of-specific-collection-elements"></span><h2>Methods-selectors of specific collection elements<a class="headerlink" href="#methods-selectors-of-specific-collection-elements" title="Permalink to this headline">¶</a></h2>
 <p>Additionally, you can sort the resulting collection by some condition:</p>
-<p><code class="docutils literal"><span class="pre">filtered_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">all_by(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filtered(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filter_by(Condition)</span></code></p>
+<p><code class="docutils literal"><span class="pre">filtered_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">all_by(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filtered(Condition)</span></code>  | <code class="docutils literal"><span class="pre">filter_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">ss(Condition)</span></code></p>
 <p>returns the proxy-collection that represents elements of original collection filtered by condition</p>
 <p>e.g. <code class="docutils literal"><span class="pre">ss('.item').filtered_by(text('foo'))</span></code></p>
-<p><code class="docutils literal"><span class="pre">element_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">find_by(Condition)</span></code></p>
-<p>returns the first collection element that satisfied the condition</p>
+<p><code class="docutils literal"><span class="pre">element_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">find_by(Condition)</span></code> | <code class="docutils literal"><span class="pre">s(Condition)</span></code></p>
+<p>returns the first element of the collection that matches the condition</p>
 <p>e.g. <code class="docutils literal"><span class="pre">ss('.item').element_by(text('foo'))</span></code></p>
 <p>Some more useful methods for working with SeleneCollection:</p>
 <p><code class="docutils literal"><span class="pre">size()</span></code> - returns size of collection</p>
@@ -112,18 +112,20 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneCollection</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#methods-to-get-statues-and-attributes-of-elements-collection">Methods to get statues and attributes of elements collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-to-get-statuses-and-attributes-of-elements-collection">Methods to get statuses and attributes of elements collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#methods-selectors-of-specific-collection-elements">Methods-selectors of specific collection elements</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="collection_condition.html">Collection Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="web_driver_runner.html">WebDriverRunner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page_objects.html">PageObjects</a></li>
 </ul>
 
           <div role="search">

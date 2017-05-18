@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Selene [src] &#8212; selene  documentation</title>
+    <title>Selene API &#8212; selene  documentation</title>
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -53,13 +53,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="selene-src">
-<span id="selene-src"></span><h1>Selene <a class="reference external" href="https://github.com/yashaka/selene">[src]</a><a class="headerlink" href="#selene-src" title="Permalink to this headline">¶</a></h1>
-<p>The core of the Selene library. Main methods are <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code>:</p>
-<p><code class="docutils literal"><span class="pre">s(String</span> <span class="pre">cssSelector)</span></code> – returns object of the SeleneElement class that represents first element found by CSS selector on the page.</p>
-<p><code class="docutils literal"><span class="pre">s(By)</span></code> – returns &#8220;first SeleneElement&#8221; by the locator of the By class</p>
-<p><code class="docutils literal"><span class="pre">ss(String</span> <span class="pre">cssSelector)</span></code> – returns object of type ElementsCollection that represents collection of all elements found by a CSS selector.</p>
-<p><code class="docutils literal"><span class="pre">ss(By)</span></code> – returns &#8220;collection of elements&#8221; by the locator of By type</p>
+  <div class="section" id="selene-api">
+<span id="selene-api"></span><h1>Selene API<a class="headerlink" href="#selene-api" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/yashaka/selene">[src]</a></p>
+<p>The core of the Selene library. Main methods are <code class="docutils literal"><span class="pre">open_url</span></code>, <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code>:</p>
+<div class="section" id="open-url">
+<span id="open-url"></span><h2><code class="docutils literal"><span class="pre">open_url</span></code><a class="headerlink" href="#open-url" title="Permalink to this headline">¶</a></h2>
+<p>To visit page you can just specify url:</p>
+<p><code class="docutils literal"><span class="pre">browser.open_url('http://chromedriver.storage.googleapis.com/index.html?path=2.9')</span></code></p>
+<p>But it is better to specify base url and use relative urls to visit pages:</p>
+<p><code class="docutils literal"><span class="pre">config.app_host</span> <span class="pre">=</span> <span class="pre">'http://chromedriver.storage.googleapis.com'</span></code></p>
+<p><code class="docutils literal"><span class="pre">browser.open_url('/index.browser.open_urlhtml?path=2.9')</span></code></p>
+</div>
+<div class="section" id="s-and-ss">
+<span id="s-and-ss"></span><h2><code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code><a class="headerlink" href="#s-and-ss" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">s(cssSelector)</span></code> – returns object of the SeleneElement class that represents first element found by CSS selector on the page.</p>
+<p><code class="docutils literal"><span class="pre">s(by.*)</span></code> – returns &#8220;first SeleneElement&#8221; by the locator of the By class</p>
+<p><code class="docutils literal"><span class="pre">ss(cssSelector)</span></code> – returns object of type ElementsCollection that represents collection of all elements found by a CSS selector.</p>
+<p><code class="docutils literal"><span class="pre">ss(by.*)</span></code> – returns &#8220;collection of elements&#8221; by the locator of By type</p>
 <p>You can also use alias methods for your taste:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tasks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;.toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
@@ -68,32 +79,33 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tasks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;.toggle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Usually, when you get a SeleneElement object be the &#8220;s&#8221; command, you can perform some action on it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;#toggle-all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<p>After you receive a SeleneElement object be the &#8220;s&#8221; command, you can perform some actions or actions with it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s1">&#39;#toggle-all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>and even several actions at once:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;#new-todo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">task_text</span><span class="p">)</span><span class="o">.</span><span class="n">press_enter</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s1">&#39;#new-todo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">task_text</span><span class="p">)</span><span class="o">.</span><span class="n">press_enter</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>or check some condition:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;#todo-count&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s1">&#39;#todo-count&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">should</span><span class="p">(</span><span class="n">have</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>&#8220;ss&#8221; can be useful when a needed element is a one of a same type. For example, instead of:</p>
+<p>If we are looking for a specific element from a group of the same type, it is convenient to use the command <code class="docutils literal"><span class="pre">&quot;ss&quot;</span></code></p>
+<p>For example, instead of a long expression</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s2">&quot;//*[@id=&#39;todo-list&#39;]/li[.//text()=&#39;b&#39;]//*[@class=&#39;toggle&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>you can use a more readable and verbose alternative:</p>
+<p>you can use a much more readable chain of methods</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">(</span><span class="s1">&#39;#todo-list&gt;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by</span><span class="o">.</span><span class="n">exact_text</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;.toggle&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Such a &#8220;composite locator&#8221; is also convenient because in the case of an error in finding an element, it makes it possible, according to the error message, to immediately determine which of the &#8220;parts&#8221; did not work. In the first case, we can only get information that the &#8220;whole locator&#8221; did not work, and we will spend more time searching for the &#8220;part&#8221; that led to the error.</p>
+<p>Another plus of such chains of methods is that we get a more informative error message. It makes it possible to identify which of the &#8220;links&#8221; of the chain did not work. In the first version, we get only a message that the method did not work.</p>
 <p>In case you need to reuse some parts elsewhere - go ahead and move your locators:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="n">ss</span><span class="p">(</span><span class="s2">&quot;#todo-list&gt;li&quot;</span><span class="p">)</span>
 <span class="n">active</span> <span class="o">=</span> <span class="n">have</span><span class="o">.</span><span class="n">css_class</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">)</span>
 <span class="n">completed</span> <span class="o">=</span> <span class="n">have</span><span class="o">.</span><span class="n">css_class</span><span class="p">(</span><span class="s2">&quot;completed&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 
@@ -108,7 +120,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Selene [src]</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Selene API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#open-url"><code class="docutils literal"><span class="pre">open_url</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#s-and-ss"><code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">SeleneElement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="condition.html">Condition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>

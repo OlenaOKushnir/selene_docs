@@ -27,7 +27,8 @@ class SearchResultsPage(object):
 def test_google_search():
     google = GooglePage().open()
     search = google.search("selene")
-    search.results[0].should(have.text("In Greek mythology, Selene is the goddess of the moon"))  # :D
+    search.results[0].should(have.text("In Greek mythology,
+    Selene is the goddess of the moon"))  # :D
 ```
 
 That's it. Selene encourages to start writing tests in the simplest way. And add more layers of abstraction only by real demand.
@@ -88,7 +89,8 @@ class Footer(object):
         self.clear_completed = self.container.element("#clear-completed")
 
     def should_have_items_left(self, number_of_active_tasks):
-        self.container.element("#todo-count>strong").should(have.exact_text(str(number_of_active_tasks)))
+        self.container.element("#todo-count>strong").
+             should(have.exact_text(str(number_of_active_tasks)))
 
 
 class TodoMVC(object):

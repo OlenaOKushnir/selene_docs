@@ -1,10 +1,10 @@
-# Selene
+# Selene API
 
 [[src]](https://github.com/yashaka/selene)
 
 The core of the Selene library. Main methods are ```open_url```, ```s``` and ```ss```:
 
-## open_url
+## ```open_url```
 
 To visit page you can just specify url:
 
@@ -38,11 +38,11 @@ instead of
 tasks[2].element(".toggle").click()
 ```
 
-Usually, when you get a SeleneElement object be the "s" command, you can perform some action on it:
+After you receive a SeleneElement object be the "s" command, you can perform some actions or actions with it:
 ```
 s('#toggle-all').click()
 ```
-and even several actions at once:
+
 ```
 s('#new-todo').set_value(task_text).press_enter()
 ```
@@ -51,19 +51,22 @@ or check some condition:
 s('#todo-count').should(have.text('3'))
 ```
 
-```"ss"``` can be useful when a needed element is a one of a same type. For example, instead of:
+If we are looking for a specific element from a group of the same type, it is convenient to use the command ```"ss"```
+
+For example, instead of a long expression
 
 ```
 s("//*[@id='todo-list']/li[.//text()='b']//*[@class='toggle']").click()
 ```
 
-you can use a more readable and verbose alternative:
+you can use a much more readable chain of methods
 
 ```
 ss('#todo-list>li').element(by.exact_text('b')).find('.toggle').click()
 ```
 
-Such a "composite locator" is also convenient because in the case of an error in finding an element, it makes it possible, according to the error message, to immediately determine which of the "parts" did not work. In the first case, we can only get information that the "whole locator" did not work, and we will spend more time searching for the "part" that led to the error.
+Another plus of such chains of methods is that we get a more informative error message. It makes it possible to identify which of the "links" of the chain did not work. In the first version, we get only a message that the method did not work.
+
 
 In case you need to reuse some parts elsewhere - go ahead and move your locators:
 

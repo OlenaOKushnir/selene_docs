@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Condition" href="condition.html" />
-    <link rel="prev" title="Selene [src]" href="selene.html" /> 
+    <link rel="prev" title="Selene API" href="selene.html" /> 
   </head>
   <body role="document">
     <div class="header-wrapper" role="banner">
@@ -35,7 +35,7 @@
         <div class="headertitle"><a
           href="index.html">selene  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="selene.html" title="Selene [src]"
+          <a href="selene.html" title="Selene API"
              accesskey="P">previous</a> |
           <a href="condition.html" title="Condition"
              accesskey="N">next</a> |
@@ -56,12 +56,10 @@
   <div class="section" id="seleneelement">
 <span id="seleneelement"></span><h1>SeleneElement<a class="headerlink" href="#seleneelement" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/yashaka/selene/blob/master/selene/elements.py"> [src] </a></p>
-<p>The object returned by the <code class="docutils literal"><span class="pre">s</span></code> command is called a &#8220;proxy-element&#8221;. The SeleneElement class is a wrapper around Selenium WebElement, which adds some very useful methods. At the moment of creation of proxy-element the real search of element on the page is not initiated. But on any subsequent action or condition check - the actual replica of the page element will be acquired by the &#8220;proxy-element&#8221;, and the corresponding action or condition check will be &#8220;proxied&#8221; to it.</p>
-<p>This allows to automate testing of modern dynamic web applications.
-You can also store the &#8220;proxy-element&#8221; into the PageObject field before loading the corresponding page in the browser:</p>
+<p>The <code class="docutils literal"><span class="pre">s</span></code> method returns a&#8221; proxy-element &#8221;. I.e an actual &#8220;version&#8221; of the real element from the page will be received at the moment when we will perform some action or condition check with SeleneElement. This allows you to work with the PageObject template, save elements in the PageObject field before the page is opened. And of course, the use of proxy elements greatly simplifies the testing of dynamic web applications.</p>
+<p>e.g.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># before opening a browser and loading a page url</span>
 <span class="kn">from</span> <span class="nn">selene.api</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">selene.bys</span> <span class="k">import</span> <span class="n">by_link_text</span>
 
 
 <span class="k">class</span> <span class="nc">HomePage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -69,7 +67,7 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
     <span class="n">menu</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="s1">&#39;#menu&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">filter_active</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by_link_text</span><span class="p">(</span><span class="s1">&#39;Active&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by</span><span class="o">.</span><span class="n">link_text</span><span class="p">(</span><span class="s1">&#39;Active&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">toggle_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;#toggle-all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
@@ -82,15 +80,16 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
         <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/home&quot;</span><span class="p">)</span>
         <span class="c1"># the browser has been opened and the page has been loaded</span>
         <span class="n">home</span><span class="o">.</span><span class="n">filter_active</span><span class="p">()</span>
-        <span class="c1"># exactly here the search was initiated and the actual replica of the page menu element was got,</span>
-        <span class="n">then</span> <span class="n">its</span> <span class="n">inner</span> <span class="n">stream</span> <span class="n">element</span> <span class="n">was</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">click</span> <span class="n">command</span> <span class="n">was</span> <span class="s2">&quot;proxied&quot;</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span>
+        <span class="c1"># exactly here the search was initiated and the actual replica of the page menu</span>
+        <span class="n">element</span> <span class="n">was</span> <span class="n">got</span><span class="p">,</span> <span class="n">then</span> <span class="n">its</span> <span class="n">inner</span> <span class="n">stream</span> <span class="n">element</span> <span class="n">was</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">click</span>
+        <span class="n">command</span> <span class="n">was</span> <span class="s2">&quot;proxied&quot;</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span>
         <span class="c1"># ...something else might happen</span>
         <span class="n">home</span><span class="o">.</span><span class="n">toggle_all</span><span class="p">()</span>
         <span class="c1"># and now, before finding the element-link with the &quot;Active&quot; text to</span>
         <span class="n">click</span> <span class="n">on</span> <span class="n">it</span> <span class="o">-</span> <span class="n">again</span><span class="p">,</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">element</span> <span class="n">was</span> <span class="n">found</span> <span class="n">on</span> <span class="n">the</span> <span class="n">page</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>There are such methods for for the SeleneElement:</p>
+<p>There are such methods for  the SeleneElement:</p>
 <ul class="simple">
 <li>inner elements search methods (the methods for creating proxy-elements that represents corresponding inner elements)</li>
 <li>methods to check element state - assertions</li>
@@ -110,18 +109,17 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
 <p>Here <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">ss</span></code> are just synonyms of <code class="docutils literal"><span class="pre">element</span></code> and <code class="docutils literal"><span class="pre">all</span></code> methods correspondingly.</p>
 <p>All these methods return &#8220;proxy-elements&#8221;, they will not start the search of actual elements on the page until you call some action like <code class="docutils literal"><span class="pre">.click()</span></code>.</p>
 <p>So you can build whole &#8220;locators chains&#8221;, getting one element inside another:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s1">&#39;#menu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;.edit&quot;</span><span class="p">)</span><span class="o">..</span><span class="n">all</span><span class="p">(</span><span class="s1">&#39;.item&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="s1">&#39;#menu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;.edit&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="s1">&#39;.item&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also save such &#8220;locators chains&#8221; in variables. And no matter how long they are, whether the browser is open and a page is already loaded or not</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># before opening the browser and loading the page</span>
 <span class="kn">from</span> <span class="nn">selene.api</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">selene.bys</span> <span class="k">import</span> <span class="n">by_link_text</span>
 
 <span class="k">class</span> <span class="nc">HomePage</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">menu</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="s1">&#39;#menu&#39;</span><span class="p">)</span>
-    <span class="n">active</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by_link_text</span><span class="p">(</span><span class="s1">&#39;Active&#39;</span><span class="p">))</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">by</span><span class="o">.</span><span class="n">link_text</span><span class="p">(</span><span class="s1">&#39;Active&#39;</span><span class="p">))</span>
     <span class="n">toggle</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s1">&#39;#toggle-all&#39;</span><span class="p">)</span>
 
     <span class="c1"># ...</span>
@@ -142,31 +140,23 @@ You can also store the &#8220;proxy-element&#8221; into the PageObject field bef
 <div class="section" id="methods-actions-on-element">
 <span id="methods-actions-on-element"></span><h2>Methods-actions on element<a class="headerlink" href="#methods-actions-on-element" title="Permalink to this headline">¶</a></h2>
 <p>Element actions methods:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">click</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">double_click</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">context_click</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">hover</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="nb">set</span><span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">|</span> <span class="n">set_value</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
-
-<span class="o">+</span> <span class="n">scroll_to</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">press_enter</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">press_escape</span><span class="p">()</span>
-
-<span class="o">+</span> <span class="n">press_tab</span><span class="p">()</span>
-<span class="o">...</span>
-</pre></div>
-</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">click()</span></code></li>
+<li><code class="docutils literal"><span class="pre">double_click()</span></code></li>
+<li><code class="docutils literal"><span class="pre">context_click()</span></code></li>
+<li><code class="docutils literal"><span class="pre">hover()</span></code></li>
+<li><code class="docutils literal"><span class="pre">set(String)</span></code> | <code class="docutils literal"><span class="pre">set_value(String)</span></code></li>
+<li><code class="docutils literal"><span class="pre">scroll_to()</span></code></li>
+<li><code class="docutils literal"><span class="pre">press_enter()</span></code></li>
+<li><code class="docutils literal"><span class="pre">press_escape()</span></code></li>
+<li><code class="docutils literal"><span class="pre">press_tab()</span></code>
+...</li>
+</ul>
 <p>All these methods perform corresponding action after the search for proxy-elements on the page.
 And each of these actions has a built-in implicit wait for the element&#8217;s visibility (the default value of config.timeout is 4 seconds).
-As a result you don&#8217;t need to check the element&#8217;s visibility everytime.</p>
+As a result you don&#8217;t need to check the element&#8217;s visibility all the time.</p>
 <p>Instead of code</p>
-<p><code class="docutils literal"><span class="pre">s('.destroy').shouldBe(visible).click()</span></code></p>
+<p><code class="docutils literal"><span class="pre">s('.destroy').should(be.visible).click()</span></code></p>
 <p>you write just</p>
 <p><code class="docutils literal"><span class="pre">s('.destroy').click()</span></code>.</p>
 <p>The majority of actions allow you to build method chains also:</p>
@@ -174,37 +164,25 @@ As a result you don&#8217;t need to check the element&#8217;s visibility everyti
 </div>
 <div class="section" id="methods-to-get-element-statuses-and-attribute-values">
 <span id="methods-to-get-element-statuses-and-attribute-values"></span><h2>Methods to get element statuses and attribute values<a class="headerlink" href="#methods-to-get-element-statuses-and-attribute-values" title="Permalink to this headline">¶</a></h2>
-<p>These methods trigger the search of actual element on a page. Some of them have built-in implicit waitings (wait for availability in DOM, even if method is hidden on the page):</p>
-<p>e.g.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">text</span><span class="p">()</span>
-
-<span class="n">is_selected</span><span class="p">()</span>
-
-<span class="n">is_enabled</span><span class="p">()</span>
-
-<span class="n">location_once_scrolled_into_view</span><span class="p">()</span>
-
-<span class="n">size</span><span class="p">()</span>
-
-<span class="n">location</span><span class="p">()</span>
-
-<span class="n">rect</span><span class="p">()</span>
-</pre></div>
-</div>
+<p>These methods trigger the search of actual element on a page. Some of them have built-in implicit waits (wait for availability in DOM, even if method is hidden on the page):</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">text()</span></code></li>
+<li><code class="docutils literal"><span class="pre">is_selected()</span></code></li>
+<li><code class="docutils literal"><span class="pre">is_enabled()</span></code></li>
+<li><code class="docutils literal"><span class="pre">location_once_scrolled_into_view()</span></code></li>
+<li><code class="docutils literal"><span class="pre">size()</span></code></li>
+<li><code class="docutils literal"><span class="pre">location()</span></code></li>
+<li><code class="docutils literal"><span class="pre">rect()</span></code></li>
+</ul>
 <p>The following methods do not wait:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tag_name</span><span class="p">()</span>
-
-<span class="n">get_attribute</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
-
-<span class="n">is_displayed</span><span class="p">()</span>
-
-<span class="n">value_of_css_property</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
-
-<span class="n">parent</span><span class="p">()</span>
-
-<span class="nb">id</span><span class="p">()</span>
-</pre></div>
-</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tag_name()</span></code></li>
+<li><code class="docutils literal"><span class="pre">get_attribute(String)</span></code></li>
+<li><code class="docutils literal"><span class="pre">is_displayed()</span></code></li>
+<li><code class="docutils literal"><span class="pre">value_of_css_property(String)</span></code></li>
+<li><code class="docutils literal"><span class="pre">parent()</span></code></li>
+<li><code class="docutils literal"><span class="pre">id()</span></code></li>
+</ul>
 </div>
 </div>
 
@@ -219,7 +197,7 @@ As a result you don&#8217;t need to check the element&#8217;s visibility everyti
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Selene</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene [src]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selene.html">Selene API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SeleneElement</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#inner-elements-search-methods">Inner elements search methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#methods-to-check-element-state-assertions">Methods to check element state - assertions</a></li>
@@ -254,7 +232,7 @@ As a result you don&#8217;t need to check the element&#8217;s visibility everyti
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="selene.html" title="Selene [src]"
+            <a href="selene.html" title="Selene API"
               >previous</a> |
             <a href="condition.html" title="Condition"
               >next</a> |
