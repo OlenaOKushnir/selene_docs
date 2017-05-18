@@ -13,7 +13,7 @@ from selene.support.conditions import have
 
 class GooglePage(object):
     def open(self):
-        open_url("http://google.com/ncr")
+        open_url('http://google.com/ncr')
         return self
 
     def search(self, text):
@@ -22,13 +22,13 @@ class GooglePage(object):
 
 class SearchResultsPage(object):
     def __init__(self):
-        self.results = ss(".srg .g")
+        self.results = ss('.srg .g')
 
 def test_google_search():
     google = GooglePage().open()
-    search = google.search("selene")
-    search.results[0].should(have.text("In Greek mythology,
-    Selene is the goddess of the moon"))  # :D
+    search = google.search('selene')
+    search.results[0].should(have.text
+      ('In Greek mythology, Selene is the goddess of the moon'))  # :D
 ```
 
 That's it. Selene encourages to start writing tests in the simplest way. And add more layers of abstraction only by real demand.

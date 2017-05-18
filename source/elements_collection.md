@@ -15,12 +15,12 @@ Just as for SeleneElement for SeleneCollection there are condition checks(```sho
 The SeleneCollection class also has a special type of check - the correspondence of each individual element from the list to a specific condition (```should_each(be.Condition)``` or ```should_each(have.Condition)```):
 
 ```
-ss(".srg .g")[0].should(have.text("In Greek mythology, Selene is the goddess of the moon"))
+ss(".srg .g")[0].should(have.text('In Greek mythology, Selene is the goddess of the moon'))
 
 ss('#todo-list>li').should(have.size(3))
 
-ss('#todo-list>li').should(have.exact_texts("1", "2", "3")).
-    should_each(have.css_class("active"))
+ss('#todo-list>li').should(have.exact_texts('1', '2', '3')).
+    should_each(have.css_class('active'))
 ```
 
 These methods also have built-in implicit waits. Within 4 seconds (by default) they wait for the condition to be satisfied.

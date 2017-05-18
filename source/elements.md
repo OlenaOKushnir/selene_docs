@@ -2,7 +2,7 @@
 
 [ [src] ](https://github.com/yashaka/selene/blob/master/selene/elements.py)
 
-The ```s``` method returns a" proxy-element ". I.e an actual "version" of the real element from the page will be received at the moment when we will perform some action or condition check with SeleneElement. This allows you to work with the PageObject template, save elements in the PageObject field before the page is opened. And of course, the use of proxy elements greatly simplifies the testing of dynamic web applications.
+The ```s``` method returns a "proxy-element". I.e an actual "version" of the real element from the page will be received at the moment when we will perform some action or condition check with SeleneElement. This allows you to work with the PageObject template, save elements in the PageObject field before the page is opened. And of course, the use of proxy elements greatly simplifies the testing of dynamic web applications.
 
 e.g.:
 
@@ -24,18 +24,18 @@ class HomePage(object):
     def test(self):
         home = HomePage()
         # now the s command was executed and the SeleneElement object was created,
-        but the browser has not been opened yet
+        # but the browser has not been opened yet
         # ...
         open("/home")
         # the browser has been opened and the page has been loaded
         home.filter_active()
         # exactly here the search was initiated and the actual replica of the page menu
-        element was got, then its inner stream element was found and the click
-        command was "proxied" to it.
+        # element was got, then its inner stream element was found and the click
+        # command was "proxied" to it.
         # ...something else might happen
         home.toggle_all()
         # and now, before finding the element-link with the "Active" text to
-        click on it - again, the actual version of the menu element was found on the page.
+        # click on it - again, the actual version of the menu element was found on the page.
 
 ```
 

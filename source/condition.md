@@ -79,11 +79,11 @@ clickable // e.g. s(".button").should(be.clickable)
 
 enabled // e.g. s('#new-todo').should(be.enabled)
 
-in_dom | exist // e.g. s(".input").should(be.in_dom)
+in_dom | exist // e.g. s('.input').should(be.in_dom)
 
-text(String substring) // e.g. s('#element').should(have.text(‘foo’))
+text(String substring) // e.g. s('#element').should(have.text('foo'))
 
-exact_text(String wholeText) // e.g. s('#element').should(have.exact_text(‘foo’))
+exact_text(String wholeText) // e.g. s('#element').should(have.exact_text('foo'))
 
 css_class(String) // e.g. s('.element').should(have.css_cl('nav'))
 
