@@ -49,7 +49,7 @@ e.g. ```browser.all('#todo-list>li').should(be.empty)```
 
 e.g. ```config.browser_name = 'chrome'```
 
-You can omit custom configuration and Selene will use default values, e.g. '''browser_name''' is equal to ```'firefox'``` by default
+You can omit custom configuration and Selene will use default values, e.g. ```browser_name``` is equal to ```'firefox'``` by default
 
 Config options can be also overriden with corresponding system variables (see [#51](https://github.com/yashaka/selene/issues/51) for more details)
 

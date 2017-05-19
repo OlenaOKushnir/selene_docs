@@ -2,7 +2,7 @@
 
 [[src]](https://github.com/yashaka/selene/blob/master/selene/bys.py)
 
-By default element finders (browser.element, browser.all) accept css selectors as strings, but you can use any custom selector from the by module.
+By default element finders (```browser.element```, ```browser.all```) accept css selectors as strings, but you can use any custom selector from the by module.
 
 There are such ```by``` selectors for searching by xpath, text, part of text or attribute in Selene:
 
