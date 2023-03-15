@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "selene-docs"
+version = "0.1.1"
+description = "Outdated (2017) and deprecated docs project for selene."
+authors = [
+    "Iakiv Kramarenko <yashaka@gmail.com>",
+    "Olena Kushnir <unknown@example.com>",
+    "Artem Hotenov <qa@hotenov.com>",
+]
+license = "MIT"
+readme = "README.md"
+# packages = [{include = "selene_docs"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^6.1.3"
+myst-parser = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
