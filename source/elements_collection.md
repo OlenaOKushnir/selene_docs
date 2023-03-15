@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # SeleneCollection
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 The object of the SeleneCollection class is a "proxy", like [SeleneElement](http://selene-docs-test.readthedocs.io/en/latest/elements.html#). To call it, you need to call the ```ss``` method. The result is the list of web-elements on the page.
 

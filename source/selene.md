@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # Selene API
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 [[src]](https://github.com/yashaka/selene)
 

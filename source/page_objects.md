@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # PageObjects
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 If you did not like the "non-OOP" module functions from above, don't panic, you can use the same API via creating SeleneDriver objects...
 

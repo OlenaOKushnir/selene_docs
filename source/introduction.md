@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # Selene
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 (Selenide port in Python)
 

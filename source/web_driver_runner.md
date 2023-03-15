@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # WebDriverRunner
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 [ [src] ](https://github.com/yashaka/selene/blob/master/selene/conditions.py)
 

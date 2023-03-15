@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # Quick Start
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 ## Basic Usage: 4 pillars of Selene
 

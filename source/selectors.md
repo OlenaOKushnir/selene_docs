@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # Selectors
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 [[src]](https://github.com/yashaka/selene/blob/master/selene/bys.py)
 

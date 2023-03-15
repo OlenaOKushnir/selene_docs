@@ -1,4 +1,10 @@
+<meta http-equiv="refresh" content="6; url=https://yashaka.github.io/selene/"/>
+
 # Collection Conditions
+
+```{eval-rst}
+.. include:: includes/redirect-banner.rst
+```
 
 The following check models are used:  
 
