@@ -1,7 +1,7 @@
 .. raw:: html
 
    <br/>
-   <a href="https://yashaka.github.io/selene/" class="banner" aria-label="Shop now" style="text-decoration: none">
+   <a href="https://yashaka.github.io/selene/" class="banner" aria-label="Navigate to new Selene documentation website" style="text-decoration: none">
       <div class="banner__grid">
 
          <div aria-hidden="true">
