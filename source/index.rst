@@ -3,8 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. meta::
+   :http-equiv=Refresh: 6; url='https://yashaka.github.io/selene/'
+
 Welcome to Selene's documentation!
 =======================================
+
+.. include:: includes/redirect-banner.rst
 
 .. toctree::
    :maxdepth: 2
