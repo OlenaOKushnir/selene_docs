@@ -1,4 +1,4 @@
-@import 'agogo.css';
+@import 'alabaster.css';
 
 /* -------------------------------- 
 
@@ -31,6 +31,8 @@ Usage: codyhouse.co/license
     border-color: rgb(206, 96, 96);
     border-width: 0.2em;
     transition: 0.3s;
+    /*TOO BIG on mobile. Fix when you'll how*/
+    width: 120%;
 }
 
 .banner__text > h2 {
@@ -141,7 +143,7 @@ Usage: codyhouse.co/license
     }
 
     .banner__text {
-        padding: 3rem;
+        padding: 2rem;
     }
 
     .banner__link-wrapper {
