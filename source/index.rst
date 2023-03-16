@@ -1,37 +1,100 @@
-.. selene_docs documentation master file, created by
-   sphinx-quickstart on Fri May 05 20:16:20 2017.
+.. selene documentation master file, created by
+   sphinx-quickstart on Sat Mar  4 11:34:49 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 .. meta::
    :http-equiv=Refresh: 6; url='https://yashaka.github.io/selene/'
 
-Welcome to Selene's documentation!
-=======================================
+Selene - Concise API for Selenium in Python 
+===========================================
 
 .. include:: includes/redirect-banner.rst
 
+.. image:: https://travis-ci.org/yashaka/selene.svg?branch=master
+   :target: https://travis-ci.org/yashaka/selene
+
+.. image:: https://codecov.io/gh/yashaka/selene/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/yashaka/selene
+
+.. image:: https://badges.gitter.im/gitterHQ/gitter.svg
+   :target: https://gitter.im/automician/selene
+
+(Selenide port in Python)
+
+
+Main features:
+
+- Concise API for Selenium
+- jQuery-style selectors
+- Ajax support
+- PageObjects support
+- Automatic driver management
+
+
+Selene was inspired by `Selenide <http://selenide.org/>`_ from Java world.
+
+Tests with Selene can be built either in a simple straightforward "selenide' style or with PageObjects composed from Widgets i.e. reusable element components.
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-   introduction
-   quick_start
-   selene
-   elements
-   condition
-   selectors
-   elements_collection
-   collection_condition
-   web_driver_runner
-   configuration
-   page_objects
 
 
+Installation
+////////////
 
-Indices and tables
-==================
+latest release version
+^^^^^^^^^^^^^^^^^^^^^^
+::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   $ pip install selene
+
+latest development version
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    $ git clone https://github.com/yashaka/selene.git
+    $ python setup.py install
+
+latest published pre-release version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+   $ pip install selene --pre
+
+
+Quick Start
+///////////
+
+Basic Usage: 4 pillars of Selene
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All Selene API consists just from 4 pillars:
+
+1. Browser Actions (including finding elements)
+2. Custom Selectors
+3. Assertion Conditions
+4. Custom Configuration
+
+And one more not mandatory bonus:
+
+5. concise jquery-style shortcuts for finding elements
+
+All pillars are reflected in corresponding selene python modules and their methods.
+
+::
+
+   from selene.api import *
+
+   browser.open_url('https://todomvc4tasj.herokuapp.com')
+   s("#new-todo").should(be.blank)
+   s("#new-todo").set_value(1).press_enter()
+   ss("#todo-list>li").should(have.exact_texts("1"))
+
+Further Documentation Guides
+////////////////////////////
+
+.. toctree::
+   :maxdepth: 2
+
+   advanced
