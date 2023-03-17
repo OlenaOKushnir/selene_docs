@@ -24,3 +24,18 @@ For local docs preview (local build):
 4. Build HTML pages to `./build/html` folder:
 
     `make html`
+
+### Correlation Table
+
+The following table helps to recall, which old RTD site is built from (what branch).
+
+❗ DO NOT MERGE THESE BRANCHES WITH MASTER ❗  
+_(or vice versa)_
+
+| Branch | RTD project | Website |
+|--------|--------|--------|
+| `master`| https://readthedocs.org/projects/selene-docs-test/| [selene-docs-test.readthedocs.io](https://selene-docs-test.readthedocs.io/) <br><br>|
+| `rtd-selene-documentation-domain`| https://readthedocs.org/projects/selene-documentation/ <br><br> https://readthedocs.org/projects/selene-docs/| [selene-documentation.readthedocs.io](https://selene-documentation.readthedocs.io/) <br><br><br> [selene-docs.readthedocs.io](http://selene-docs.readthedocs.io/)<br><br>|
+| `???` <br> ❗ NO ACCESS to this RTD project | https://readthedocs.org/projects/selene/<br><br><br>| [selene.readthedocs.io](https://selene.readthedocs.io/) <br> _(version (content) is the same as above branch and it can be used as source branch)_|
+
+**Note:** Different branches are created intentionally. Because websites were configured with two different Sphinx themes: `agogo` and `alabaster` (in 2017). In order not to shock users too much _(auto redirect is enough for that)_ these themes were preserved. After several years (when ALL old websites disappear from Google search), maintainers can leave one of the branch for all old websites (changing default / source branch in RTD project admin panel).
